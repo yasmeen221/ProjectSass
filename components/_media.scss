@@ -1,0 +1,14 @@
+@media (max-width:1200px){
+    .row-md{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+}
+@media (max-width:760px){
+    .row-md{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+}

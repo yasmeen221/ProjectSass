@@ -1,0 +1,55 @@
+@mixin gridmixin($screeninfix,$numberColumns,$breakpoints){
+    @if($screeninfix==''){
+        @media all and (min-width:$breakpoints) {
+            @for $i from 1 through $numberColumns{
+                .col-#{$i}{
+                    width: 100/($numberColumns/$i)*1%;
+                }
+                .offset-#{$i}{
+                    margin-left: 100/($numberColumns/$i)*1%;
+                }
+            }
+            .container{
+                width: 100%;
+            }
+            .show{
+                display: block !important;
+            }
+            .hidden{
+                display: none !important;
+            }
+        }
+        
+    }
+    @else{
+     
+        @media all and (min-width:$breakpoints) {
+            @for $i from 1 through $numberColumns{
+                .col-#{$screeninfix}-#{$i}{
+                    width: 100/($numberColumns/$i)*1%;
+                }
+                .offset-#{$screeninfix}-#{$i}{
+                    margin-left: 100/($numberColumns/$i)*1%;
+                }
+            }
+            .container{
+                width: $breakpoints;
+                margin: auto;
+            }
+            .show-#{$screeninfix}{
+                display: block !important;
+            }
+            .hidden-#{$screeninfix}{
+                display: none !important;
+            }
+        }
+    } 
+}
+
+@include gridmixin("",12,0px);
+@include gridmixin("sm",12,576px);
+@include gridmixin("md",12,768px);
+@include gridmixin("lg",12,992px);
+@include gridmixin("xl",12,1200px);
+@include gridmixin("xxl",12,1400px);
+
